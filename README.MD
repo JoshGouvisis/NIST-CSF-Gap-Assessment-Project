@@ -289,3 +289,20 @@ I went into this project thinking the biggest problems at Meridian would be on t
 The Q1 2026 phishing incident was the most eye-opening part of the assessment for me. On the surface it looked like one compromised account that got contained. But when I mapped it against the framework, that single incident exposed gaps in Detect, Respond, and Identify all at once. No centralized logging to catch it faster, no IR plan to follow when it happened, and no post-incident review to learn from it afterward. I hadn't thought about incidents that way before. Now I do.
 
 I also learned that gap analysis is only useful if you're honest. It would have been easy to rate something as "partially implemented" just because a tool exists. But the framework pushes you to ask what evidence you actually have that a control is working, and for a lot of Meridian's controls, that evidence wasn't there. That discipline is something I'll bring into any GRC or risk analyst role I step into.
+
+---
+
+## Skills Demonstrated
+- NIST CSF 2.0 maturity scoring across all six functions (Govern, Identify, Protect, Detect, Respond, Recover)
+- Gap analysis and findings documentation in a business-facing format
+- Risk-based prioritization and remediation roadmap development
+- Translating technical control gaps into executive-level recommendations
+- Regulatory mapping across SEC, FINRA, and SOX requirements
+- Writing structured assessment reports for a professional audience
+
+---
+
+## About Me
+Security Risk Analyst with 12 years in enterprise risk management. CompTIA Security+ certified (SY0-701). Google Cybersecurity Certificate. ISC2 CC in progress. CRISC candidate. Based in Phoenix, AZ.
+
+[LinkedIn](https://linkedin.com/in/joshgouvisis) | [GitHub](https://github.com/JoshGouvisis)
