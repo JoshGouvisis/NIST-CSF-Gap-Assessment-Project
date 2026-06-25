@@ -305,4 +305,4 @@ I also learned that gap analysis is only useful if you're honest. It would have 
 ## About Me
 Security Risk Analyst with 12 years in enterprise risk management. CompTIA Security+ certified (SY0-701). Google Cybersecurity Certificate. ISC2 CC in progress. CRISC candidate. Based in Phoenix, AZ.
 
-[LinkedIn](https://linkedin.com/in/joshgouvisis) | [GitHub](https://github.com/JoshGouvisis)
+[LinkedIn](https://www.linkedin.com/in/joshgouvisis/) | [GitHub](https://github.com/JoshGouvisis)
