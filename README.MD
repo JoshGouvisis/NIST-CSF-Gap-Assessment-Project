@@ -7,6 +7,8 @@
 **Framework Version:** NIST CSF 2.0
 **Classification:** Internal Use Only
 
+> Part of a GRC portfolio series. See also the [Third-Party Vendor Risk Assessment](https://github.com/JoshGouvisis/third-party-vendor-risk-assessment) conducted for the same fictional firm, and the [Security Policy Document Set](https://github.com/JoshGouvisis/security-policy-document-set). Full portfolio: [github.com/JoshGouvisis](https://github.com/JoshGouvisis).
+
 ---
 
 ## Executive Summary
@@ -303,6 +305,6 @@ I also learned that gap analysis is only useful if you're honest. It would have 
 ---
 
 ## About Me
-Security Risk Analyst with 12 years in enterprise risk management. CompTIA Security+ certified (SY0-701). Google Cybersecurity Certificate. ISC2 CC in progress. CRISC candidate. Based in Phoenix, AZ.
+GRC & Security Risk Analyst with 12 years in enterprise risk management, transitioning into GRC and cybersecurity. CompTIA Security+ certified (SY0-701). Google Cybersecurity Professional Certificate. ISC2 CC, Certified in Cybersecurity. CySA+ in progress. Based in Phoenix, AZ.
 
 [LinkedIn](https://www.linkedin.com/in/joshgouvisis/) | [GitHub](https://github.com/JoshGouvisis)
