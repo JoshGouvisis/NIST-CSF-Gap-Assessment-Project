@@ -121,9 +121,10 @@ A basic vulnerability scan runs monthly through Microsoft Defender but findings 
 
 - Build and maintain a comprehensive asset inventory covering hardware, software, cloud resources, SaaS applications, and data repositories. Assign an owner to each asset.
 - Implement a formal data classification scheme (Public, Internal, Confidential, Restricted) and apply it to all data repositories
-- Establish a formal vulnerability management process: scan, prioritize by CVSS score and asset criticality, assign remediation owners, track to closure with SLAs
-- Conduct an annual formal risk assessment that identifies threats, vulnerabilities, likelihood, and business impact for critical assets
-- Institute a formal lessons learned process triggered by every significant incident or near-miss
+- Document the network architecture including cloud workloads, third-party integrations, and data flows
+- Establish a formal risk assessment process that runs at minimum annually and after significant changes
+- Create a vulnerability management program with defined SLAs: Critical (24-48 hours), High (7 days), Medium (30 days), Low (90 days)
+- Conduct a formal post-incident review for the Q1 2026 phishing incident and establish a lessons learned process going forward
 
 ---
 
@@ -131,33 +132,37 @@ A basic vulnerability scan runs monthly through Microsoft Defender but findings 
 
 **Maturity Score: 3.0 / 5 (Defined)**
 
-The Protect function covers the safeguards used to limit the impact of cybersecurity events. This is often where organizations invest most heavily, and Meridian is relatively stronger here compared to the other functions.
+The Protect function covers the safeguards that limit or contain the impact of a potential cybersecurity event. This is where most organizations focus first because the controls are tangible: firewalls, access controls, encryption, training.
 
 ### Current State
 
-Meridian has Microsoft Defender for Endpoint deployed across all managed devices. Duo MFA is enabled for Microsoft 365 and VPN but is not enforced on all third-party platforms used by advisors. The Cisco Meraki firewall provides perimeter protection and basic network segmentation at each office.
+Meridian's strongest area. Microsoft Defender for Endpoint is deployed across all corporate devices. Cisco Meraki firewalls are in place at all three locations. Duo MFA is deployed for VPN and Microsoft 365 but not enforced for all applications (third-party trading platforms use separate authentication without MFA).
 
-No formal security awareness training program exists. The IT team manages access provisioning manually with no formal access review process. There is no privileged access management (PAM) solution, and several service accounts have excessive permissions that have accumulated over time.
+Active Directory manages user access but there is no formal access review process. Terminated employees are removed within 48 hours but there is no automated deprovisioning. No privileged access management (PAM) solution is in place. Administrator accounts use the same password policy as standard users.
+
+Endpoint encryption (BitLocker) is enabled on all laptops. Email encryption is available but not enforced for sensitive communications. Data loss prevention (DLP) rules are not configured.
+
+There is no formal security awareness training program. Employees received a one-time security briefing during onboarding but there are no ongoing training requirements, no phishing simulations, and no compliance tracking.
 
 ### Findings
 
 | Category | Finding | Gap |
 |----------|---------|-----|
-| PR.AA (Identity Management and Access Control) | MFA deployed for M365 and VPN, not for all third-party platforms | Incomplete MFA coverage. No PAM solution. No formal access review process. |
-| PR.AT (Awareness and Training) | No formal security awareness training program | Employees have not received structured security training. No phishing simulation program. |
-| PR.DS (Data Security) | No data classification or data handling standards | No DLP controls. No encryption policy for data at rest or in transit beyond platform defaults. |
-| PR.PS (Platform Security) | Defender deployed. Patch management handled by IT but not formalized. | No documented patch SLAs. No configuration baseline or hardening standards. |
-| PR.IR (Technology Infrastructure Resilience) | Meraki provides basic segmentation | No micro-segmentation. No formal network architecture review. |
+| PR.AA (Identity Management, Authentication, Access Control) | MFA deployed for VPN and M365 but not all applications. No formal access reviews. No PAM. | Third-party platforms lack MFA. No quarterly access recertification. Admin accounts not hardened. |
+| PR.AT (Awareness and Training) | One-time onboarding briefing only | No ongoing security awareness training, no phishing simulations, no compliance tracking |
+| PR.DS (Data Security) | BitLocker on laptops, email encryption available but not enforced | No DLP rules configured. No data classification applied. Sensitive data handling is ad hoc. |
+| PR.PS (Platform Security) | Defender deployed, Meraki firewalls in place | Patching is manual and inconsistent. No hardening baselines documented. |
+| PR.IR (Technology Infrastructure Resilience) | Veeam backup runs nightly | Backups not tested for restoration. No documented disaster recovery plan. |
 
 ### Recommendations
 
-- Enforce MFA on all applications accessed by employees, including third-party trading and advisory platforms
-- Implement a privileged access management solution to control, monitor, and audit all privileged account activity
-- Conduct quarterly access reviews to verify that user permissions are appropriate and revoke access for departed employees or role changes
-- Launch a security awareness training program with at minimum annual training and monthly phishing simulation exercises
-- Implement a data loss prevention solution and define encryption requirements for data at rest and in transit
-- Establish patch management SLAs: critical patches within 48 hours, high within 7 days, medium within 30 days
-- Define and implement configuration baselines and hardening standards for all endpoints, servers, and network devices
+- Enforce MFA on all applications including third-party trading platforms. Eliminate single-factor authentication entirely.
+- Implement quarterly access reviews where managers certify that their direct reports have appropriate access. Remove stale accounts.
+- Deploy a privileged access management (PAM) solution. Enforce separate admin accounts with stronger password requirements and session logging.
+- Launch a security awareness training program: mandatory annual training for all employees, monthly phishing simulations, tracked completion rates reported to leadership
+- Configure DLP rules in Microsoft 365 to detect and prevent unauthorized transmission of sensitive financial data
+- Document and enforce a patch management process with defined SLAs matching the vulnerability management program
+- Test backup restoration quarterly. Document and test a disaster recovery plan annually.
 
 ---
 
@@ -165,11 +170,13 @@ No formal security awareness training program exists. The IT team manages access
 
 **Maturity Score: 2.0 / 5 (Developing)**
 
-The Detect function covers capabilities for identifying cybersecurity events in a timely manner. Detection is the difference between catching an incident early and discovering a breach months after the fact.
+The Detect function ensures the organization can identify cybersecurity events in a timely manner. Detection without response is just watching. But you cannot respond to what you do not detect.
 
 ### Current State
 
-Meridian has no SIEM solution. Microsoft Defender generates endpoint alerts and Microsoft 365 produces audit logs, but these are not centrally aggregated or reviewed on any consistent schedule. The IT team reviews Defender alerts reactively when something is flagged as urgent.
+Meridian has no SIEM solution. Microsoft Defender generates endpoint alerts and Microsoft 365 produces audit logs, but these are reviewed only when someone reports a problem. There is no centralized log collection, no correlation of events across systems, and no defined alert triage process.
+
+The Q1 2026 phishing incident was detected because the compromised employee noticed unusual activity in their email and reported it to IT. It was not detected by any automated system. The IT team contained the incident within 48 hours but acknowledged that without the employee's report, the compromise could have continued for weeks.
 
 Network monitoring is limited to Meraki dashboard alerts for connectivity issues. There is no network-level threat detection (IDS/IPS) beyond what Meraki provides by default.
 
